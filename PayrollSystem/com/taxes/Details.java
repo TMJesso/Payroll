@@ -8,7 +8,7 @@ public class Details {
 	private double minTax;
 	private double taxPercent;
 	
-	private Percent percent;
+	private Taxpro percent;
 	
 	public Details(double minAmount, double lessThanAmount, int numberAllowances, double incomeTax) {
 		this.minAmount = minAmount;
@@ -72,7 +72,7 @@ public class Details {
 	/**
 	 * @return the percent
 	 */
-	public Percent getPercent() {
+	public Taxpro getPercent() {
 		return percent;
 	}
 
@@ -110,7 +110,7 @@ public class Details {
 	/**
 	 * @param percent the percent to set
 	 */
-	public void setPercent(Percent percent) {
+	public void setPercent(Taxpro percent) {
 		this.percent = percent;
 	}
 	

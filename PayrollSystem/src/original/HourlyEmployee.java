@@ -1,6 +1,6 @@
 // HourlyEmployee.java
 // HourlyEmployee class extends Employee.
-package src.original;
+package original;
 public class HourlyEmployee extends Employee
 {
    private double wage;  // wage per hour
