@@ -121,13 +121,17 @@ class ActualLoadTaxes {
 	 */
 	public void convertDelimited() throws FileNotFoundException {
 		//String filename = gt.getString("Enter the path and filename of the comma delimited file to convert\n\n(example: f:\\Programming\\Payroll\\WithholdingTables_2015)\n\nDo not include the extenstion because it will be added automaticly\nHowever, the file must be saved using a comma delimited format \nand have the csv extension!"); // "f:\\Programming\\Payroll\\WithholdingTables_2015.csv";
-		String filename = "f:\\Programming\\Payroll\\WithholdingTables_2015";
+		String filename = "datafiles/csv/WithholdingTables_2015";
 		newloadPercent((filename + ".csv"));
 
 	}
 
 	
 	//--------------------------------------------------------End Menu---------------------------------
+
+	
+	
+	
 	/** display the results of a integer, two-dimensional array in the form of a matrix */
 	public void buildOutput( int array[][], String message ) {
 		// loop through array's rows
@@ -191,6 +195,7 @@ class ActualLoadTaxes {
 	
 	/** get a string using a JOptionPane dialog box 
 	 * @param message: display a message to the user while asking for input
+	 * @return a string
 	 * */
 	public String getString(String message) {
 		String input = "";
@@ -209,10 +214,15 @@ class ActualLoadTaxes {
 	}
 	
 	
-	/** display a message 
-	 * 0 - using the JOptionPane dialog box
-	 * 1 - using the System.out method
-	 * 2 - using both JOptionPane and System.out */
+	/** display a message<br>
+	 * 0 - using the JOptionPane dialog box<br>
+	 * 1 - using the System.out method<br>
+	 * 2 - using both JOptionPane and System.out<br>
+	 * 
+	 * @param message the message to be displayed
+	 * @param num the integer to determine how it is displayed
+	 * 
+	 */
 	public void sayOutput(String message, int num) {
 		switch (num) {
 		case 0: JOptionPane.showMessageDialog(null, message);break;
@@ -221,12 +231,21 @@ class ActualLoadTaxes {
 		}
 	}
 	
-	/** display a output message from JTextArea using JOptionPane dialog box */
+	/** display a output message from JTextArea using JOptionPane dialog box<br>
+	 * 
+	 * @param outputArea the designated area to display the results in
+	 * 
+	 * 
+	 */
 	public void sayOutput(JTextArea outputArea) {
 		JOptionPane.showMessageDialog(null, outputArea);
 	}
 
-	/** convert a string to an integer */
+	/** convert a string to an integer<br>
+	 * 
+	 * @param input the message to be displayed
+	 * @return an integer value
+	 */
 	public int intString(String input) {
 		boolean loop = true;
 		int num1 = 0;
@@ -243,7 +262,11 @@ class ActualLoadTaxes {
 		return num1;
 	}
 
-	/** convert a string to a double */
+	/** convert a string to a double<br>
+	 * 
+	 * @param dblNumber the String to convert to a double
+	 * @return a double
+	 */
 	public double dblString(String dblNumber) {
 		boolean loop = true;
 		double num1 = 0.0;
@@ -262,7 +285,16 @@ class ActualLoadTaxes {
 	}
 
 	
-	/** add the numbers to the array */
+	/** search the quote and get the valid number and place it in the returning array<br>
+	 * add the numbers to the array<br>
+	 * 
+	 * @param a [][] type double: a two dimensional array
+	 * @param quote the string to look through
+	 * @param line the element of the first dimension of the array
+	 * @param nextOne the element of the second dimension of the array
+	 * @return double [][]
+	 * 
+	 *  */
 	private double[][] procArray(double[][] a, String quote, int line, int nextOne) {
 		int x = 0;
 		boolean percent = false, debug = true;
@@ -306,8 +338,14 @@ class ActualLoadTaxes {
 		return a;
 	}
 	
-	/** parse the full array and make it either 
-	* single or married depending on the users preference
+	/** parse the full array and make it either<br>
+	* single or married depending on which side it is on<br>
+	* left side in csv file is single, right side is married<br>
+	* 
+	* @param a [x][y] type double: the value of the singleRrate array
+	* @param b [x][y] type double: the value of the shrinkMyArray array
+	* @param toWhat type String: the whether it is single or married
+	* @return a [x][y] the singleRate array
 	*/
 	public double[][] reLoadPercent(double[][] a, double[][] b, String toWhat) {
 		boolean debug = false;
@@ -331,8 +369,11 @@ class ActualLoadTaxes {
 		return a;
 	}
 	
-	/** shrink the original array to the usable information
-	* so it can be parsed into separate arrays
+	/** shrink the original array to the usable information<br>
+	* so it can be parsed into separate arrays<br>
+	* 
+	* @param a [x][y] type double: the array that will be used to get useful information from
+	* @return newArray [x][y] type double: return the results
 	*/
 	public double[][] shrinkArray(double[][] a) {
 		double[][] newArray = new double[a.length][10];
@@ -354,7 +395,13 @@ class ActualLoadTaxes {
 	}
 	
 	
-	/** write wage bracket data to file */
+	/** write wage bracket data to file<br>
+	 * 
+	 * @param a [][] type int: the values of the wage bracket data
+	 * @param filename the filename (along with the path) where the file is to be written
+	 * 
+	 * @return void
+	 * */
 	public void writeWageBracket(int[][] a, String filename) {
 		/** write percentage data do file */
 		try {
@@ -379,11 +426,12 @@ class ActualLoadTaxes {
 	}
 	
 	
-	/** process the allTaxCode into the single or married wage bracket files
-	 * <p>
-	 * pass the array in the following order:<p>
-	 * @param: allTaxCode = a
-	 * @param: singleRate or marriedRate array = b */
+	/** process the allTaxCode into the single or married wage bracket files<br>
+	 * 
+	 * pass the array in the following order:<br>
+	 * @param a [x][y] type int: allTaxCode = a
+	 * @param b [x][y] type int: singleRate or marriedRate array = b 
+	 * */
 	public int[][] processWageBracket(int[][] a, int[][] b) {
 		
 		for (int x = 0; x < b.length;x++) {
@@ -399,7 +447,13 @@ class ActualLoadTaxes {
 	}
 
 	
-	/** write percentage data to file */
+	/** write percentage data to file<br>
+	 * 
+	 * @param a [x][y] type double: the array that contains the data to be written to file
+	 * @param filename type String: the filename (with path) where the data will be stored
+	 * @return void
+	 * 
+	 *  */
 	public void writePercent(double[][] a, String filename) {
 		
 		try {
@@ -423,7 +477,17 @@ class ActualLoadTaxes {
 		}
 	}
 	
-	/** get data for wage bracket table */
+	/** get data for wage bracket table<br><br>
+	 * 
+	 *  I think I can optimize this code using the split method call on the string<br>
+	 *  so I need to recode this sometime in the future<br><br>
+	 *  <strong>I will add this to my todo list</strong><br><br>
+	 *  @param filename type String: filename (and path) where the data will be read from
+	 *  @param a [x][y] type int: the array that will contain the data
+	 *  @return a [x][y]
+	 *  
+	 *  
+	 *  */
 	public int[][] loadWageBracket(String filename, int[][] a) throws FileNotFoundException {
 		boolean debug = false;
 		Scanner input = new Scanner(new File(filename));
@@ -480,38 +544,41 @@ class ActualLoadTaxes {
 	/* build the data files for single and married percentage 
 	 * this is to be kept for my personal reference
 	 * 
+	 *
 	public void createPercentFiles() throws FileNotFoundException  {
 		boolean debug = false;
-		PayrollLib gt = new PayrollLib();
 		double[][] allTaxCode = new double[7][22];
 		double[][] singleRate = new double[7][5];
 		double[][] marriedRate = new double[7][5];
 		double[][] shrinkMyArray = new double[7][10];
 		String filename = "f:\\Programming\\Payroll\\weeklySingleMarriedPercentage.csv";
-		allTaxCode = gt.loadPercent(filename, allTaxCode);
-		shrinkMyArray = gt.shrinkArray(allTaxCode);
+		allTaxCode = loadPercent(filename, allTaxCode);
+		shrinkMyArray = shrinkArray(allTaxCode);
 		// parse the single rate
-		singleRate = gt.reLoadPercent(singleRate, shrinkMyArray, "single");
+		singleRate = reLoadPercent(singleRate, shrinkMyArray, "single");
 		// parse the married rate
-		marriedRate = gt.reLoadPercent(marriedRate, shrinkMyArray, "married");
+		marriedRate = reLoadPercent(marriedRate, shrinkMyArray, "married");
 			
 		String newName = "f:\\Programming\\Payroll\\weeklySinglePercentage.dat";
-		gt.writePercent(singleRate, newName);
+		writePercent(singleRate, newName);
 		newName = "f:\\Programming\\Payroll\\weeklyMarriedPercentage.dat";
-		gt.writePercent(marriedRate, newName);
+		writePercent(marriedRate, newName);
 		if (debug) {
-			gt.buildOutput(shrinkMyArray,"This is the shrunk array");
-			gt.buildOutput(singleRate, "Single Rate");
-			gt.buildOutput(marriedRate, "Married Rate");
+			buildOutput(shrinkMyArray,"This is the shrunk array");
+			buildOutput(singleRate, "Single Rate");
+			buildOutput(marriedRate, "Married Rate");
 		
 		}
 
 	}
-	 */	
+	 /* */	
 	
 	
-	/** how many rows do I need for the array from the file for the initialization of the array 
-	 * @param filename: filename to be scanned
+	/** how many rows do I need for the array from the file for the initialization of the array<br>
+	 * 
+	 * @param filename to be scanned
+	 * @return rows type int: contains the number of rows
+	 * 
 	 * */
 	public int getNumberofRows(String filename) throws FileNotFoundException {
 		int rows = 0;
@@ -527,7 +594,13 @@ class ActualLoadTaxes {
 	}
 	
 	
-	/** how many columns are in the file for the initialization of the array */
+	/** how many columns are in the file for the initialization of the array<br>
+	 * 
+	 * @param filename type String: filename (with path) to be scanned
+	 * @return col type int: the number of colums in the file (seperated with commas)
+	 *  
+	 *  
+	 *  */
 	public int getNumberofColumns(String filename) throws FileNotFoundException {
 		int col = 0;
 		String getLine = "";
@@ -548,8 +621,74 @@ class ActualLoadTaxes {
 	}
 	
 	
-	/** file io to read from a CSV file 
-	 * @throws FileNotFoundException */
+	/** file io to read from a CSV file<br>
+	 * setup arrays to be used in the prcessing of the file<br>
+	 * 
+	 * @param filename type String: filename (with path) to be scanned and gather useful data from
+	 * @return void
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 *  */
+	public void newLoadPercent(String filename) throws FileNotFoundException {
+		// declare arrays to be used to create the necessary files
+		double[][] a = new double[7][22];
+		double[][] singleRate = new double[7][5];
+		double[][] marriedRate = new double[7][5];
+		double[][] shrinkMyArray = new double[7][10];
+		// declare whether I am in debug mode or not
+		boolean debug = true;
+		// declare filenames to be used for the singles and married and a debug value (period)
+		String newSingleFile = "", newMarriedFile = "", period = "";
+		// establish connection with the file
+		Scanner input = new Scanner(new File(filename));
+		// declare the line and the column strings to parse them
+		String getLine = "", quote = "";
+		// declare what row and column i am on and parsing to put into the a array
+		int row = 0, col = 0;
+		// as long as there is a line to read from the file
+		while (input.hasNext()) {
+			// get the line
+			getLine = input.nextLine();
+			// what heading am I on and set the appropriate file names
+			// reset the row and col values to 0 then loop again
+			switch (getLine) {
+				case "Weekly": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/weeklySinglePercent.dat";newMarriedFile = "datafiles/weeklyMarriedPercent.dat";continue;
+				case "Biweekly": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/biweeklySinglePercent.dat";newMarriedFile = "datafiles/biweeklyMarriedPercent.dat";continue;
+				case "Semimonthly": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/semimonthlySinglePercent.dat";newMarriedFile = "datafiles/semimonthlyMarriedPercent.dat";continue;
+				case "Monthly": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/monthlySinglePercent.dat";newMarriedFile = "datafiles/monthlyMarriedPercent.dat";continue;
+				case "Quarterly": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/quarterlySinglePercent.dat";newMarriedFile = "datafiles/quarterlyMarriedPercent.dat";continue;
+				case "Semiannual": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/semiannualSinglePercent.dat";newMarriedFile = "datafiles/semiannualMarriedPercent.dat";continue;
+				case "Annual": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/annualSinglePercent.dat";newMarriedFile = "datafiles/annualMarriedPercent.dat";continue;
+				case "Daily": period = getLine; row = 0; col = 0; newSingleFile = "datafiles/dailySinglePercent.dat";newMarriedFile = "datafiles/dailyMarriedPercent.dat";continue;
+			}
+			
+			if (debug) {
+				// show what the line says
+				sayOutput(getLine + " : Read Next Line from file", 1);
+			}
+			
+			
+			
+			
+		}
+	}
+
+	
+	
+	/** file io to read from a CSV file<br>
+	 * setup arrays to be used in the prcessing of the file<br>
+	 * 
+	 * @param filename type String: filename (with path) to be scanned and gather useful data from
+	 * @return void
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @throws FileNotFoundException
+	 *  */
 	public void newloadPercent(String filename) throws FileNotFoundException {
 		// declare arrays to be used to create the necessary files
 		double[][] a = new double[7][22];
@@ -593,11 +732,11 @@ class ActualLoadTaxes {
 				if (debug) {
 					sayOutput("Row: " + row + " Col: " + col, 1);
 				}
-				if (getLine.charAt(x) == 44) { // comma
-					// if it is a comman then increase the column and get the next character
+				if ( ((char) getLine.charAt(x)) == ',') { // comma
+					// if it is a comma then increase the column and get the next character
 					col++;
 					continue;
-				} else if (getLine.charAt(x) == 34) { // double quote
+				} else if (((char) getLine.charAt(x)) == '"') { // double quote
 					// if the character is a double quote then increase the pointer to the next character
 					// put the contents that are between the double quotes into the QUOTES variable
 					// remove any commas from the quote then send the the array to be parsed and cleaned
@@ -613,7 +752,9 @@ class ActualLoadTaxes {
 					x = getLine.indexOf("\"", x);
 				} else {
 					// it wasn't a double quote or a comma so get the contents between the commas
-					System.out.println("\t\t\t" + x + "\t\t\t" + getLine.length() + "\t\t\t" + period);
+					if (debug) {
+						System.out.println("\t\t\t" + x + "\t\t\t" + getLine.length() + "\t\t\t" + period);
+					}
 					
 					quote = getLine.substring(x, ((getLine.indexOf(",", x)<0)?getLine.length():getLine.indexOf(",", x)));
 					quote = quote.trim();
