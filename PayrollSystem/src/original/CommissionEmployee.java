@@ -51,13 +51,15 @@ public CommissionEmployee( String first, String last, String ssn, double sales, 
    }
 
    // calculate earnings
-   public double earnings()
+   @Override
+public double earnings()
    {
       return commissionRate * grossSales;
    }
 
    // return String representation of CommissionEmployee object
-   public String toString()
+   @Override
+public String toString()
    {
       return String.format( "%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f",
          "commission employee", firstName, lastName,

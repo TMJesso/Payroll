@@ -28,13 +28,15 @@ public class BasePlusCommissionEmployee extends CommissionEmployee
    }
 
    // calculate earnings
-   public double earnings()
+   @Override
+public double earnings()
    {
       return baseSalary + ( commissionRate * grossSales );
    }
 
    // return String representation of BasePlusCommissionEmployee
-   public String toString()
+   @Override
+public String toString()
    {
       return String.format(
          "%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f\n%s: %.2f",

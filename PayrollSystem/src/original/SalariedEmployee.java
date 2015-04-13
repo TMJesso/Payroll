@@ -25,13 +25,15 @@ public class SalariedEmployee extends Employee
       return weeklySalary;
    } // end method getWeeklySalary
 
-   public double earnings()
+   @Override
+public double earnings()
    {
       return getWeeklySalary();
    } // end method earnings
 
    // return String representation of SalariedEmployee object
-   public String toString()
+   @Override
+public String toString()
    {
       return String.format( "salaried employee: %s\n%s: $%,.2f",
          super.toString(), "weekly salary", getWeeklySalary() );

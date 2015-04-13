@@ -54,7 +54,8 @@ public class Employee
    } // end method getSocialSecurityNumber
 
    // return String representation of Employee object
-   public String toString()
+   @Override
+public String toString()
    {
       return String.format( "%s %s\nsocial security number: %s",
          getFirstName(), getLastName(), getSocialSecurityNumber() );
