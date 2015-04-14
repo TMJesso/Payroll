@@ -13,30 +13,6 @@ import javax.swing.*;
  *
  */
 public class LoadTaxes {
-
-	public static void main(String[] args) {
-		ActualLoadTaxes someTaxes  = new ActualLoadTaxes();
-		try {
-			someTaxes.doTaxes();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-}
-
-
-/** ActualLoadTaxes class<br>
- * 
- * 
- * @author Theral Jessop<br>
- * <strong>Copyright</strong> (c) 2015 Theral Jessop All Rights Reserved<br>
- * LoadTaxes.java<br>
- * 
- *
- */
-class ActualLoadTaxes {
 	
 	public void doTaxes() throws FileNotFoundException {
 		//System.out.println("Starting Bracket");
