@@ -13,8 +13,8 @@ public class CommissionEmployee extends Employee {
    private double commissionRate; // commission percentage
 
    // five-argument constructor
-   public CommissionEmployee( String first, String last, String ssn, boolean status, double sales, double rate ) {
-	  super( first, last, ssn, status);
+   public CommissionEmployee( String first, String last, String ssn, boolean status, double sales, double rate, int allowances, int hireMonth, int hireDay, int hireYear ) {
+	  super( first, last, ssn, status, allowances, hireMonth, hireDay, hireYear);
       setGrossSales( sales ); // validate and store gross sales
       setCommissionRate( rate ); // validate and store commission rate
    }
@@ -31,17 +31,17 @@ public class CommissionEmployee extends Employee {
 
    // set commission rate
    public void setCommissionRate( double rate ) {
-      commissionRate = ( rate > 0.0 && rate < 1.0 ) ? rate : 0.0;
+      commissionRate = (( rate > 0.0 && rate < 1.0 ) ? rate : 0.0);
    }
 
    // return commission rate
    public double getCommissionRate() {
-      return commissionRate;
+      return this.commissionRate;
    }
 
    // calculate earnings
    public double earnings() {
-      return commissionRate * grossSales;
+      return this.commissionRate * this.grossSales;
    }
 
    // return String representation of CommissionEmployee object

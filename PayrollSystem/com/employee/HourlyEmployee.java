@@ -3,14 +3,13 @@
 
 package com.employee;
 
-
 public class HourlyEmployee extends Employee {
    private double wage;  // wage per hour
    private double hours; // hours worked for week
 
    // five-argument constructor
-   public HourlyEmployee( String first, String last, String ssn, boolean status, double hourlyWage, double hoursWorked ) {
-      super( first, last, ssn, status);
+   public HourlyEmployee( String first, String last, String ssn, boolean status, double hourlyWage, double hoursWorked , int allowances, int hireMonth, int hireDay, int hireYear) {
+      super( first, last, ssn, status, allowances, hireMonth, hireDay, hireYear);
       setWage( hourlyWage ); // validate and store hourly wage
       setHours( hoursWorked ); // validate and store hours worked
    } // end five-argument HourlyEmployee constructor

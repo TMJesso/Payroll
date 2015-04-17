@@ -8,8 +8,8 @@ public class SalariedEmployee extends Employee {
    private double weeklySalary;
 
    // four-argument constructor
-   public SalariedEmployee( String first, String last, String ssn, boolean status, double salary ) {
-      super( first, last, ssn, status ); // pass to Employee constructor
+   public SalariedEmployee( String first, String last, String ssn, boolean status, double salary, int allowances, int hireMonth, int hireDay, int hireYear ) {
+      super( first, last, ssn, status, allowances, hireMonth, hireDay, hireYear); // pass to Employee constructor
       setWeeklySalary( salary ); // validate and store salary
    } // end four-argument SalariedEmployee constructor
 

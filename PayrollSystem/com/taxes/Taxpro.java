@@ -6,8 +6,7 @@ public class Taxpro {
 	private int withHoldingAllowance;
 	
 	/*
-	 * 
-	 * This is ONLY for Percentage method
+	 * withHoldingAllowance is ONLY for Percentage method
 	 * 
 	 * 2015 amount for ONE Withholding allowance
 	 * 
