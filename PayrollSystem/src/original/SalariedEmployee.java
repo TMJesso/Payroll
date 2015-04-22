@@ -1,6 +1,6 @@
 // SalariedEmployee.java
 // SalariedEmployee class extends Employee.
-package original;
+package old.original;
 public class SalariedEmployee extends Employee
 {
    private double weeklySalary;

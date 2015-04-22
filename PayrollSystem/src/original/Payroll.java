@@ -8,7 +8,7 @@
 */
 
 
-package original;
+package old.original;
 import java.util.*;
 
 public class Payroll {

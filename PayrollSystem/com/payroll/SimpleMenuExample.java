@@ -70,6 +70,7 @@ public class SimpleMenuExample
 		// Get the input from the user
 		System.out.print("Please input your choice (1-4): ");
 
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner( System.in );
 
 		inputInt = input.nextInt();
