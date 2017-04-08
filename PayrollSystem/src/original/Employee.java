@@ -1,6 +1,6 @@
 // Employee.java
 // Employee superclass
-package old.original;
+package original;
 public class Employee
 {
    //protected members can be accessed directly by members of this class, members of

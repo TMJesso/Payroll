@@ -11,7 +11,7 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
    public BasePlusCommissionEmployee( String first, String last, String ssn, boolean status, double sales, double rate, double salary, int allowances, int hireMonth, int hireDay, int hireYear ) {
       super( first, last, ssn, status, sales, rate, allowances, hireMonth, hireDay, hireYear);
       setBaseSalary( salary ); // validate and store base salary
-   }
+   } 
 
    // set base salary
    public void setBaseSalary( double salary ) {

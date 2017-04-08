@@ -3,7 +3,7 @@
 
 // CommissionEmployee inherits from Employee and has
 // access to Employee's protected members.
-package old.original;
+package original;
 
 
  public class CommissionEmployee extends Employee {

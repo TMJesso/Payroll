@@ -2,7 +2,7 @@
 
 // BasePlusCommissionEmployee inherits from CommissionEmployee and has
 // access to CommissionEmployee's protected members.
-package old.original;
+package original;
 public class BasePlusCommissionEmployee extends CommissionEmployee
 {
    private double baseSalary; // base salary per week

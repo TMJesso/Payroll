@@ -2,8 +2,8 @@
  * Payrol.java
  * Interacts with the user to create employees ...
  *
- * @author
- * @since
+ * @author Theral Jessop
+ * @copyright (C) Theral Jessop 2015 All Rights Reserved
  * @version 1.0
 */
 
